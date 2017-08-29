@@ -68,12 +68,6 @@ def main():
     print("Adding Group Name:%s" % group_name)
     request_fn = make_request(host, session_id)
     apps = get_apps(request_fn)
-
-    unconfigured_apps = list(filter(lambda x: "createTs" not in x, apps))
-
-    print("-------------------- unconfigured_apps")
-    print(unconfigured_apps)
-
-    registered_app = map(register_app(request_fn, email, group_name), unconfigured_apps)
+    registered_app = map(register_app(request_fn, email, group_name), apps)
     print("---------- registered")
     print(list(registered_app))
